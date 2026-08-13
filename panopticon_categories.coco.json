@@ -1,0 +1,170 @@
+{
+    "licenses": [
+        {
+            "id": 0,
+            "name": "Greek Army Classified",
+            "url": ""
+        }
+    ],
+    "info": {
+        "contributor": "Hellenic Army PvT (SC) Kallinteris Andreas",
+        "date_created": "2025/09/27",
+        "version": "1",
+        "year": 2025,
+        "description": ""
+    },
+    "categories": [
+        {
+            "id": 0,
+            "name": "person",
+            "supercategory": "person"
+        },
+        {
+            "id": 1,
+            "name": "car",
+            "supercategory": "civilian vehicle"
+        },
+        {
+            "id": 2,
+            "name": "motorcycle",
+            "supercategory": "civilian vehicle"
+        },
+        {
+            "id": 3,
+            "name": "bus",
+            "supercategory": "civilian vehicle"
+        },
+        {
+            "id": 4,
+            "name": "van",
+            "supercategory": "civilian vehicle"
+        },
+        {
+            "id": 5,
+            "name": "truck",
+            "supercategory": "civilian vehicle"
+        },
+        {
+            "id": 6,
+            "name": "bicycle",
+            "supercategory": "civilian vehicle"
+        },
+        {
+            "id": 7,
+            "name": "train",
+            "supercategory": "civilian vehicle"
+        },
+        {
+            "id": 8,
+            "name": "boat",
+            "supercategory": "civilian vehicle"
+        },
+        {
+            "id": 9,
+            "name": "tank",
+            "supercategory": "military vehicle"
+        },
+        {
+            "id": 10,
+            "name": "infantry fighting vehicle",
+            "supercategory": "military vehicle"
+        },
+        {
+            "id": 11,
+            "name": "armored personnel carrier",
+            "supercategory": "military vehicle"
+        },
+        {
+            "id": 12,
+            "name": "self-propelled artillery",
+            "supercategory": "military vehicle"
+        },
+        {
+            "id": 13,
+            "name": "multiple launch rocket system",
+            "supercategory": "military vehicle"
+        },
+        {
+            "id": 15,
+            "name": "military truck",
+            "supercategory": "military vehicle"
+        },
+        {
+            "id": 16,
+            "name": "excavator",
+            "supercategory": "construction vehicle"
+        },
+        {
+            "id": 17,
+            "name": "bulldozer",
+            "supercategory": "construction vehicle"
+        },
+        {
+            "id": 19,
+            "name": "loader",
+            "supercategory": "construction vehicle"
+        },
+        {
+            "id": 20,
+            "name": "dump truck",
+            "supercategory": "construction vehicle"
+        },
+        {
+            "id": 21,
+            "name": "concrete mixer truck",
+            "supercategory": "construction vehicle"
+        },
+        {
+            "id": 22,
+            "name": "grader",
+            "supercategory": "construction vehicle"
+        },
+        {
+            "id": 23,
+            "name": "road paver",
+            "supercategory": "construction vehicle"
+        },
+        {
+            "id": 24,
+            "name": "compactor",
+            "supercategory": "construction vehicle"
+        },
+        {
+            "id": 25,
+            "name": "flame",
+            "supercategory": "fire"
+        },
+        {
+            "id": 26,
+            "name": "smoke",
+            "supercategory": "fire"
+        },
+        {
+            "id": 27,
+            "name": "fixed-wing aircraft",
+            "supercategory": "aircraft"
+        },
+        {
+            "id": 28,
+            "name": "rotorcraft",
+            "supercategory": "aircraft"
+        },
+        {
+            "id": 29,
+            "name": "drone",
+            "supercategory": "aircraft"
+        },
+        {
+            "id": 18,
+            "name": "mobile crane",
+            "supercategory": "construction vehicle"
+        },
+        {
+            "id": 14,
+            "name": "armored intelligence vehicle",
+            "supercategory": "military vehicle"
+        }
+    ],
+    "images": [],
+    "annotations": []
+}

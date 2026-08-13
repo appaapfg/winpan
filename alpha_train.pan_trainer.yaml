@@ -1,0 +1,15 @@
+batch: 1.0
+close_mosaic: 0
+compile: true
+data: ./ttt1/data.yaml
+epochs: 500
+imgsz: 1280
+linear_probing: true
+model: yoloe11l-seg.pt
+multi_scale: true
+name: pan_detector_alpha_2
+plots: true
+project: ~/Desktop/aws
+save_period: 10
+scale: 0.5
+workers: 2

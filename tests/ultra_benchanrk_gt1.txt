@@ -1,0 +1,704 @@
+Loading model yolo11n
+Ultralytics 8.3.186  Python-3.13.4 torch-2.7.1+cpu CPU (Intel Core(TM) i5-1035G1 1.00GHz)
+YOLO11n summary (fused): 100 layers, 2,616,248 parameters, 0 gradients, 6.5 GFLOPs
+
+PyTorch: starting from 'C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11n.pt' with input shape (1, 3, 640, 640) BCHW and output shape(s) (1, 84, 8400) (5.4 MB)
+
+OpenVINO: export success  4.5s, saved as 'C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11n_openvino_model\' (10.3 MB)
+
+Export complete (5.0s)
+Results saved to C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models
+Predict:         yolo predict task=detect model=C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11n_openvino_model imgsz=640
+Validate:        yolo val task=detect model=C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11n_openvino_model imgsz=640 data=/usr/src/ultralytics/ultralytics/cfg/datasets/coco.yaml
+Visualize:       https://netron.app
+WARNING Unable to automatically guess model task, assuming 'task=detect'. Explicitly define task for your model, i.e. 'task=detect', 'segment', 'classify','pose' or 'obb'.
+WARNING 'source' is missing. Using 'source=C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets'.
+Loading C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11n_openvino_model for OpenVINO inference...
+Using OpenVINO LATENCY mode for batch=1 inference on GPU.0...
+
+image 1/2 C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets\bus.jpg: 640x480 4 persons, 1 bus, 14821.2ms
+image 2/2 C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets\zidane.jpg: 384x640 2 persons, 1 tie, 2177.2ms
+Speed: 6.1ms preprocess, 8499.2ms inference, 13.4ms postprocess per image at shape (1, 3, 384, 640)
+Traceback (most recent call last):
+  File "C:\Users\tempo\Desktop\Panopticon\tests\benchmark_ultralytics_runtime.py", line 33, in <module>
+    image = cv2.imread(image_path)
+  File "C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\utils\patches.py", line 33, in imread
+    file_bytes = np.fromfile(filename, np.uint8)
+FileNotFoundError: [Errno 2] No such file or directory: 'debug/images/face_4096.jpg'
+PS C:\Users\tempo\Desktop\Python> .\python.exe ..\Panopticon\tests\benchmark_ultralytics_runtime.py
+C:\Users\tempo\Desktop\Panopticon\tests\benchmark_ultralytics_runtime.py:32: SyntaxWarning: invalid escape sequence '\P'
+  for image_path in ["..\Panopticon\\debug\\images\\face_4096.jpg"]:
+is CUDA available: False
+Loading model yolo11n
+Ultralytics 8.3.186  Python-3.13.4 torch-2.7.1+cpu CPU (Intel Core(TM) i5-1035G1 1.00GHz)
+YOLO11n summary (fused): 100 layers, 2,616,248 parameters, 0 gradients, 6.5 GFLOPs
+
+PyTorch: starting from 'C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11n.pt' with input shape (1, 3, 640, 640) BCHW and output shape(s) (1, 84, 8400) (5.4 MB)
+
+OpenVINO: starting export with openvino 2025.1.0-18503-6fec06580ab-releases/2025/1...
+OpenVINO: export success  3.8s, saved as 'C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11n_openvino_model\' (10.3 MB)
+
+Export complete (4.3s)
+Results saved to C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models
+Predict:         yolo predict task=detect model=C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11n_openvino_model imgsz=640
+Validate:        yolo val task=detect model=C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11n_openvino_model imgsz=640 data=/usr/src/ultralytics/ultralytics/cfg/datasets/coco.yaml
+Visualize:       https://netron.app
+WARNING Unable to automatically guess model task, assuming 'task=detect'. Explicitly define task for your model, i.e. 'task=detect', 'segment', 'classify','pose' or 'obb'.
+WARNING 'source' is missing. Using 'source=C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets'.
+Loading C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11n_openvino_model for OpenVINO inference...
+Using OpenVINO LATENCY mode for batch=1 inference on GPU.0...
+
+image 1/2 C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets\bus.jpg: 640x480 4 persons, 1 bus, 14728.1ms
+image 2/2 C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets\zidane.jpg: 384x640 2 persons, 1 tie, 2107.9ms
+Speed: 2.8ms preprocess, 8418.0ms inference, 1.9ms postprocess per image at shape (1, 3, 384, 640)
+
+--- yolo11n-320 Results over 100 iterations  ---
+Average Detection Time: 57.0292 ms (Max: 1996.7439 ms)
+Average Preprocess Time: 1.5880 ms (Max: 2.5473 ms)
+Average Inference Time: 53.9209 ms (Max: 1991.5202 ms)
+Average Postprocess Time: 1.2276 ms (Max: 1.5853 ms)
+
+--- yolo11n-480 Results over 100 iterations  ---
+Average Detection Time: 70.9463 ms (Max: 2179.0118 ms)
+Average Preprocess Time: 3.0703 ms (Max: 4.2763 ms)
+Average Inference Time: 66.2029 ms (Max: 2174.0040 ms)
+Average Postprocess Time: 1.3851 ms (Max: 3.5672 ms)
+
+--- yolo11n-640 Results over 100 iterations  ---
+Average Detection Time: 95.8819 ms (Max: 2248.2932 ms)
+Average Preprocess Time: 8.3113 ms (Max: 22.3270 ms)
+Average Inference Time: 85.7612 ms (Max: 2236.3889 ms)
+Average Postprocess Time: 1.1169 ms (Max: 2.5688 ms)
+
+--- yolo11n-960 Results over 100 iterations  ---
+Average Detection Time: 158.1270 ms (Max: 2338.0225 ms)
+Average Preprocess Time: 20.3948 ms (Max: 24.0347 ms)
+Average Inference Time: 134.4473 ms (Max: 2315.2603 ms)
+Average Postprocess Time: 1.7332 ms (Max: 2.0802 ms)
+
+--- yolo11n-1280 Results over 100 iterations  ---
+Average Detection Time: 242.2875 ms (Max: 2328.4814 ms)
+Average Preprocess Time: 36.0362 ms (Max: 52.9774 ms)
+Average Inference Time: 198.2423 ms (Max: 2287.0364 ms)
+Average Postprocess Time: 3.9046 ms (Max: 6.4694 ms)
+Loading model yolo11s
+Ultralytics 8.3.186  Python-3.13.4 torch-2.7.1+cpu CPU (Intel Core(TM) i5-1035G1 1.00GHz)
+YOLO11s summary (fused): 100 layers, 9,443,760 parameters, 0 gradients, 21.5 GFLOPs
+
+PyTorch: starting from 'C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11s.pt' with input shape (1, 3, 640, 640) BCHW and output shape(s) (1, 84, 8400) (18.4 MB)
+
+OpenVINO: starting export with openvino 2025.1.0-18503-6fec06580ab-releases/2025/1...
+OpenVINO: export success  4.9s, saved as 'C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11s_openvino_model\' (36.4 MB)
+
+Export complete (5.9s)
+Results saved to C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models
+Predict:         yolo predict task=detect model=C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11s_openvino_model imgsz=640
+Validate:        yolo val task=detect model=C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11s_openvino_model imgsz=640 data=/usr/src/ultralytics/ultralytics/cfg/datasets/coco.yaml
+Visualize:       https://netron.app
+WARNING Unable to automatically guess model task, assuming 'task=detect'. Explicitly define task for your model, i.e. 'task=detect', 'segment', 'classify','pose' or 'obb'.
+WARNING 'source' is missing. Using 'source=C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets'.
+Loading C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11s_openvino_model for OpenVINO inference...
+Using OpenVINO LATENCY mode for batch=1 inference on GPU.0...
+
+image 1/2 C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets\bus.jpg: 640x480 4 persons, 1 bus, 20941.3ms
+image 2/2 C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets\zidane.jpg: 384x640 2 persons, 2 ties, 3218.4ms
+Speed: 3.4ms preprocess, 12079.8ms inference, 6.6ms postprocess per image at shape (1, 3, 384, 640)
+
+--- yolo11s-320 Results over 100 iterations  ---
+Average Detection Time: 80.6740 ms (Max: 3121.8002 ms)
+Average Preprocess Time: 1.7406 ms (Max: 2.5312 ms)
+Average Inference Time: 77.2325 ms (Max: 3112.6016 ms)
+Average Postprocess Time: 1.3508 ms (Max: 1.6089 ms)
+
+--- yolo11s-480 Results over 100 iterations  ---
+Average Detection Time: 109.9997 ms (Max: 3248.0605 ms)
+Average Preprocess Time: 3.7419 ms (Max: 6.2445 ms)
+Average Inference Time: 104.3181 ms (Max: 3241.4120 ms)
+Average Postprocess Time: 1.6199 ms (Max: 2.4241 ms)
+
+--- yolo11s-640 Results over 100 iterations  ---
+Average Detection Time: 155.9041 ms (Max: 3485.6718 ms)
+Average Preprocess Time: 11.0889 ms (Max: 40.4755 ms)
+Average Inference Time: 142.3106 ms (Max: 3471.5074 ms)
+Average Postprocess Time: 1.3961 ms (Max: 1.6661 ms)
+
+--- yolo11s-960 Results over 100 iterations  ---
+Average Detection Time: 270.4381 ms (Max: 3461.8542 ms)
+Average Preprocess Time: 24.9757 ms (Max: 40.8894 ms)
+Average Inference Time: 240.3684 ms (Max: 3433.0122 ms)
+Average Postprocess Time: 2.9001 ms (Max: 3.4875 ms)
+
+--- yolo11s-1280 Results over 100 iterations  ---
+Average Detection Time: 435.1925 ms (Max: 3599.7844 ms)
+Average Preprocess Time: 40.8098 ms (Max: 58.5284 ms)
+Average Inference Time: 386.8570 ms (Max: 3556.9004 ms)
+Average Postprocess Time: 3.1653 ms (Max: 6.0866 ms)
+Loading model yolo11m
+Ultralytics 8.3.186  Python-3.13.4 torch-2.7.1+cpu CPU (Intel Core(TM) i5-1035G1 1.00GHz)
+YOLO11m summary (fused): 125 layers, 20,091,712 parameters, 0 gradients, 68.0 GFLOPs
+
+PyTorch: starting from 'C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11m.pt' with input shape (1, 3, 640, 640) BCHW and output shape(s) (1, 84, 8400) (38.8 MB)
+
+OpenVINO: starting export with openvino 2025.1.0-18503-6fec06580ab-releases/2025/1...
+OpenVINO: export success  8.2s, saved as 'C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11m_openvino_model\' (77.1 MB)
+
+Export complete (10.2s)
+Results saved to C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models
+Predict:         yolo predict task=detect model=C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11m_openvino_model imgsz=640
+Validate:        yolo val task=detect model=C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11m_openvino_model imgsz=640 data=/ultralytics/ultralytics/cfg/datasets/coco.yaml
+Visualize:       https://netron.app
+WARNING Unable to automatically guess model task, assuming 'task=detect'. Explicitly define task for your model, i.e. 'task=detect', 'segment', 'classify','pose' or 'obb'.
+WARNING 'source' is missing. Using 'source=C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets'.
+Loading C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11m_openvino_model for OpenVINO inference...
+Using OpenVINO LATENCY mode for batch=1 inference on GPU.0...
+
+image 1/2 C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets\bus.jpg: 640x480 4 persons, 1 bus, 24075.0ms
+image 2/2 C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets\zidane.jpg: 384x640 2 persons, 3 ties, 1 tennis racket, 4317.7ms
+Speed: 2.5ms preprocess, 14196.4ms inference, 14.1ms postprocess per image at shape (1, 3, 384, 640)
+
+--- yolo11m-320 Results over 100 iterations  ---
+Average Detection Time: 130.4865 ms (Max: 4211.8866 ms)
+Average Preprocess Time: 1.7569 ms (Max: 2.8087 ms)
+Average Inference Time: 126.9616 ms (Max: 4204.5605 ms)
+Average Postprocess Time: 1.4028 ms (Max: 2.0634 ms)
+
+--- yolo11m-480 Results over 100 iterations  ---
+Average Detection Time: 195.5632 ms (Max: 4399.1535 ms)
+Average Preprocess Time: 4.6158 ms (Max: 5.9280 ms)
+Average Inference Time: 188.5471 ms (Max: 4392.1831 ms)
+Average Postprocess Time: 2.0131 ms (Max: 2.7930 ms)
+
+--- yolo11m-640 Results over 100 iterations  ---
+Average Detection Time: 288.1560 ms (Max: 4869.7872 ms)
+Average Preprocess Time: 12.3026 ms (Max: 27.9740 ms)
+Average Inference Time: 272.5374 ms (Max: 4854.3214 ms)
+Average Postprocess Time: 1.5020 ms (Max: 3.2589 ms)
+
+--- yolo11m-960 Results over 100 iterations  ---
+Average Detection Time: 549.9429 ms (Max: 4831.8734 ms)
+Average Preprocess Time: 24.3998 ms (Max: 29.4061 ms)
+Average Inference Time: 520.3170 ms (Max: 4799.8317 ms)
+Average Postprocess Time: 2.9401 ms (Max: 3.7982 ms)
+
+--- yolo11m-1280 Results over 100 iterations  ---
+Average Detection Time: 915.6410 ms (Max: 4173.0084 ms)
+Average Preprocess Time: 39.3757 ms (Max: 69.6545 ms)
+Average Inference Time: 868.8016 ms (Max: 4126.9648 ms)
+Average Postprocess Time: 3.2095 ms (Max: 3.8651 ms)
+Loading model yolo11l
+Ultralytics 8.3.186  Python-3.13.4 torch-2.7.1+cpu CPU (Intel Core(TM) i5-1035G1 1.00GHz)
+YOLO11l summary (fused): 190 layers, 25,340,992 parameters, 0 gradients, 86.9 GFLOPs
+
+PyTorch: starting from 'C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11l.pt' with input shape (1, 3, 640, 640) BCHW and output shape(s) (1, 84, 8400) (49.0 MB)
+
+OpenVINO: starting export with openvino 2025.1.0-18503-6fec06580ab-releases/2025/1...
+OpenVINO: export success  11.3s, saved as 'C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11l_openvino_model\' (97.3 MB)
+
+Export complete (14.0s)
+Results saved to C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models
+Predict:         yolo predict task=detect model=C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11l_openvino_model imgsz=640
+Validate:        yolo val task=detect model=C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11l_openvino_model imgsz=640 data=/ultralytics/ultralytics/cfg/datasets/coco.yaml
+Visualize:       https://netron.app
+WARNING Unable to automatically guess model task, assuming 'task=detect'. Explicitly define task for your model, i.e. 'task=detect', 'segment', 'classify','pose' or 'obb'.
+WARNING 'source' is missing. Using 'source=C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets'.
+Loading C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11l_openvino_model for OpenVINO inference...
+Using OpenVINO LATENCY mode for batch=1 inference on GPU.0...
+
+image 1/2 C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets\bus.jpg: 640x480 4 persons, 1 bus, 16973.7ms
+image 2/2 C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets\zidane.jpg: 384x640 2 persons, 3 ties, 3869.2ms
+Speed: 3.1ms preprocess, 10421.4ms inference, 11.0ms postprocess per image at shape (1, 3, 384, 640)
+
+--- yolo11l-320 Results over 100 iterations  ---
+Average Detection Time: 151.8954 ms (Max: 3858.8820 ms)
+Average Preprocess Time: 1.8908 ms (Max: 2.5951 ms)
+Average Inference Time: 148.6881 ms (Max: 3852.0327 ms)
+Average Postprocess Time: 0.9411 ms (Max: 2.1729 ms)
+
+--- yolo11l-480 Results over 100 iterations  ---
+Average Detection Time: 245.1418 ms (Max: 4025.2662 ms)
+Average Preprocess Time: 4.7783 ms (Max: 6.0314 ms)
+Average Inference Time: 237.9319 ms (Max: 4017.8018 ms)
+Average Postprocess Time: 2.0296 ms (Max: 2.8795 ms)
+
+--- yolo11l-640 Results over 100 iterations  ---
+Average Detection Time: 346.2779 ms (Max: 4166.6484 ms)
+Average Preprocess Time: 11.7168 ms (Max: 25.8670 ms)
+Average Inference Time: 331.7229 ms (Max: 4153.1308 ms)
+Average Postprocess Time: 1.4773 ms (Max: 2.1623 ms)
+
+--- yolo11l-960 Results over 100 iterations  ---
+Average Detection Time: 680.5092 ms (Max: 4411.3317 ms)
+Average Preprocess Time: 23.8191 ms (Max: 39.4726 ms)
+Average Inference Time: 651.5559 ms (Max: 4380.4135 ms)
+Average Postprocess Time: 2.9496 ms (Max: 3.5751 ms)
+
+--- yolo11l-1280 Results over 100 iterations  ---
+Average Detection Time: 1090.8473 ms (Max: 3633.3606 ms)
+Average Preprocess Time: 33.6789 ms (Max: 65.0409 ms)
+Average Inference Time: 1050.0718 ms (Max: 3591.9021 ms)
+Average Postprocess Time: 2.8935 ms (Max: 4.0925 ms)
+Loading model yolo11x
+Ultralytics 8.3.186  Python-3.13.4 torch-2.7.1+cpu CPU (Intel Core(TM) i5-1035G1 1.00GHz)
+YOLO11x summary (fused): 190 layers, 56,919,424 parameters, 0 gradients, 194.9 GFLOPs
+
+PyTorch: starting from 'C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11x.pt' with input shape (1, 3, 640, 640) BCHW and output shape(s) (1, 84, 8400) (109.3 MB)
+
+OpenVINO: starting export with openvino 2025.1.0-18503-6fec06580ab-releases/2025/1...
+OpenVINO: export success  12.6s, saved as 'C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11x_openvino_model\' (217.8 MB)
+
+Export complete (18.1s)
+Results saved to C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models
+Predict:         yolo predict task=detect model=C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11x_openvino_model imgsz=640
+Validate:        yolo val task=detect model=C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11x_openvino_model imgsz=640 data=/ultralytics/ultralytics/cfg/datasets/coco.yaml
+Visualize:       https://netron.app
+WARNING Unable to automatically guess model task, assuming 'task=detect'. Explicitly define task for your model, i.e. 'task=detect', 'segment', 'classify','pose' or 'obb'.
+WARNING 'source' is missing. Using 'source=C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets'.
+Loading C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo11x_openvino_model for OpenVINO inference...
+Using OpenVINO LATENCY mode for batch=1 inference on GPU.0...
+
+image 1/2 C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets\bus.jpg: 640x480 4 persons, 1 bus, 11910.7ms
+image 2/2 C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets\zidane.jpg: 384x640 1 person, 3 ties, 2720.5ms
+Speed: 5.9ms preprocess, 7315.6ms inference, 27.9ms postprocess per image at shape (1, 3, 384, 640)
+
+--- yolo11x-320 Results over 100 iterations  ---
+Average Detection Time: 206.4132 ms (Max: 2757.1063 ms)
+Average Preprocess Time: 2.4166 ms (Max: 4.4831 ms)
+Average Inference Time: 202.5222 ms (Max: 2746.4604 ms)
+Average Postprocess Time: 1.0596 ms (Max: 1.9675 ms)
+
+--- yolo11x-480 Results over 100 iterations  ---
+Average Detection Time: 345.3201 ms (Max: 2915.3483 ms)
+Average Preprocess Time: 5.1222 ms (Max: 6.5084 ms)
+Average Inference Time: 337.9165 ms (Max: 2907.0965 ms)
+Average Postprocess Time: 1.8907 ms (Max: 2.3046 ms)
+
+--- yolo11x-640 Results over 100 iterations  ---
+Average Detection Time: 548.4769 ms (Max: 3126.8754 ms)
+Average Preprocess Time: 10.5584 ms (Max: 32.0614 ms)
+Average Inference Time: 534.6028 ms (Max: 3113.9827 ms)
+Average Postprocess Time: 2.1074 ms (Max: 3.1122 ms)
+
+--- yolo11x-960 Results over 100 iterations  ---
+Average Detection Time: 1193.1097 ms (Max: 3752.3811 ms)
+Average Preprocess Time: 21.0618 ms (Max: 26.4943 ms)
+Average Inference Time: 1166.5077 ms (Max: 3726.9752 ms)
+Average Postprocess Time: 2.6697 ms (Max: 4.3445 ms)
+
+--- yolo11x-1280 Results over 100 iterations  ---
+Average Detection Time: 1995.1555 ms (Max: 4536.0084 ms)
+Average Preprocess Time: 31.5634 ms (Max: 56.4501 ms)
+Average Inference Time: 1957.5383 ms (Max: 4494.6834 ms)
+Average Postprocess Time: 2.1807 ms (Max: 4.2541 ms)
+Loading model yolo12n
+Ultralytics 8.3.186  Python-3.13.4 torch-2.7.1+cpu CPU (Intel Core(TM) i5-1035G1 1.00GHz)
+YOLOv12n summary (fused): 159 layers, 2,590,824 parameters, 0 gradients, 6.5 GFLOPs
+
+PyTorch: starting from 'C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo12n.pt' with input shape (1, 3, 640, 640) BCHW and output shape(s) (1, 84, 8400) (5.3 MB)
+
+OpenVINO: starting export with openvino 2025.1.0-18503-6fec06580ab-releases/2025/1...
+OpenVINO: export success  6.0s, saved as 'C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo12n_openvino_model\' (10.5 MB)
+
+Export complete (6.7s)
+Results saved to C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models
+Predict:         yolo predict task=detect model=C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo12n_openvino_model imgsz=640
+Validate:        yolo val task=detect model=C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo12n_openvino_model imgsz=640 data=None
+Visualize:       https://netron.app
+WARNING Unable to automatically guess model task, assuming 'task=detect'. Explicitly define task for your model, i.e. 'task=detect', 'segment', 'classify','pose' or 'obb'.
+WARNING 'source' is missing. Using 'source=C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets'.
+Loading C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo12n_openvino_model for OpenVINO inference...
+Using OpenVINO LATENCY mode for batch=1 inference on GPU.0...
+
+image 1/2 C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets\bus.jpg: 640x480 4 persons, 1 bus, 16717.9ms
+image 2/2 C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets\zidane.jpg: 384x640 2 persons, 1 tie, 823.7ms
+Speed: 2.9ms preprocess, 8770.8ms inference, 1.9ms postprocess per image at shape (1, 3, 384, 640)
+
+--- yolo12n-320 Results over 100 iterations  ---
+Average Detection Time: 54.9566 ms (Max: 783.8559 ms)
+Average Preprocess Time: 1.9649 ms (Max: 3.1863 ms)
+Average Inference Time: 51.3554 ms (Max: 775.9218 ms)
+Average Postprocess Time: 1.3087 ms (Max: 1.6319 ms)
+
+--- yolo12n-480 Results over 100 iterations  ---
+Average Detection Time: 81.9148 ms (Max: 841.1252 ms)
+Average Preprocess Time: 3.7102 ms (Max: 5.9598 ms)
+Average Inference Time: 76.3993 ms (Max: 835.2566 ms)
+Average Postprocess Time: 1.4935 ms (Max: 3.1253 ms)
+
+--- yolo12n-640 Results over 100 iterations  ---
+Average Detection Time: 113.4786 ms (Max: 927.8848 ms)
+Average Preprocess Time: 9.2968 ms (Max: 38.8443 ms)
+Average Inference Time: 101.4307 ms (Max: 917.5336 ms)
+Average Postprocess Time: 1.8622 ms (Max: 2.8811 ms)
+
+--- yolo12n-960 Results over 100 iterations  ---
+Average Detection Time: 247.8425 ms (Max: 1303.9355 ms)
+Average Preprocess Time: 23.5314 ms (Max: 40.1675 ms)
+Average Inference Time: 218.2653 ms (Max: 1279.3113 ms)
+Average Postprocess Time: 2.9656 ms (Max: 4.7486 ms)
+
+--- yolo12n-1280 Results over 100 iterations  ---
+Average Detection Time: 476.9849 ms (Max: 1409.2789 ms)
+Average Preprocess Time: 38.0929 ms (Max: 67.4459 ms)
+Average Inference Time: 432.1427 ms (Max: 1364.5726 ms)
+Average Postprocess Time: 2.4984 ms (Max: 7.3150 ms)
+Loading model yolo12s
+Ultralytics 8.3.186  Python-3.13.4 torch-2.7.1+cpu CPU (Intel Core(TM) i5-1035G1 1.00GHz)
+YOLOv12s summary (fused): 159 layers, 9,261,840 parameters, 0 gradients, 21.4 GFLOPs
+
+PyTorch: starting from 'C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo12s.pt' with input shape (1, 3, 640, 640) BCHW and output shape(s) (1, 84, 8400) (18.1 MB)
+
+OpenVINO: starting export with openvino 2025.1.0-18503-6fec06580ab-releases/2025/1...
+OpenVINO: export success  7.7s, saved as 'C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo12s_openvino_model\' (35.9 MB)
+
+Export complete (8.9s)
+Results saved to C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models
+Predict:         yolo predict task=detect model=C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo12s_openvino_model imgsz=640
+Validate:        yolo val task=detect model=C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo12s_openvino_model imgsz=640 data=None
+Visualize:       https://netron.app
+WARNING Unable to automatically guess model task, assuming 'task=detect'. Explicitly define task for your model, i.e. 'task=detect', 'segment', 'classify','pose' or 'obb'.
+WARNING 'source' is missing. Using 'source=C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets'.
+Loading C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo12s_openvino_model for OpenVINO inference...
+Using OpenVINO LATENCY mode for batch=1 inference on GPU.0...
+
+image 1/2 C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets\bus.jpg: 640x480 4 persons, 1 bus, 23696.0ms
+image 2/2 C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets\zidane.jpg: 384x640 2 persons, 1 tie, 1237.2ms
+Speed: 3.0ms preprocess, 12466.6ms inference, 7.4ms postprocess per image at shape (1, 3, 384, 640)
+
+--- yolo12s-320 Results over 100 iterations  ---
+Average Detection Time: 80.0847 ms (Max: 1061.5323 ms)
+Average Preprocess Time: 2.4738 ms (Max: 33.9057 ms)
+Average Inference Time: 75.6518 ms (Max: 1051.5689 ms)
+Average Postprocess Time: 1.5591 ms (Max: 3.2678 ms)
+
+--- yolo12s-480 Results over 100 iterations  ---
+Average Detection Time: 133.4429 ms (Max: 1997.1836 ms)
+Average Preprocess Time: 5.1798 ms (Max: 16.2030 ms)
+Average Inference Time: 125.8837 ms (Max: 1980.9783 ms)
+Average Postprocess Time: 1.9943 ms (Max: 2.9511 ms)
+
+--- yolo12s-640 Results over 100 iterations  ---
+Average Detection Time: 190.8099 ms (Max: 1377.6243 ms)
+Average Preprocess Time: 12.8039 ms (Max: 17.0961 ms)
+Average Inference Time: 174.1647 ms (Max: 1363.6277 ms)
+Average Postprocess Time: 2.5670 ms (Max: 4.2826 ms)
+
+--- yolo12s-960 Results over 100 iterations  ---
+Average Detection Time: 434.2755 ms (Max: 1926.8918 ms)
+Average Preprocess Time: 25.2055 ms (Max: 32.6665 ms)
+Average Inference Time: 402.9483 ms (Max: 1890.2317 ms)
+Average Postprocess Time: 3.3365 ms (Max: 6.7417 ms)
+
+--- yolo12s-1280 Results over 100 iterations  ---
+Average Detection Time: 906.1310 ms (Max: 2049.2883 ms)
+Average Preprocess Time: 40.4102 ms (Max: 65.7428 ms)
+Average Inference Time: 858.0306 ms (Max: 2000.4853 ms)
+Average Postprocess Time: 3.8668 ms (Max: 21.3083 ms)
+Loading model yolo12m
+Ultralytics 8.3.186  Python-3.13.4 torch-2.7.1+cpu CPU (Intel Core(TM) i5-1035G1 1.00GHz)
+YOLOv12m summary (fused): 169 layers, 20,166,592 parameters, 0 gradients, 67.5 GFLOPs
+
+PyTorch: starting from 'C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo12m.pt' with input shape (1, 3, 640, 640) BCHW and output shape(s) (1, 84, 8400) (39.0 MB)
+
+OpenVINO: starting export with openvino 2025.1.0-18503-6fec06580ab-releases/2025/1...
+OpenVINO: export success  9.1s, saved as 'C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo12m_openvino_model\' (77.6 MB)
+
+Export complete (13.7s)
+Results saved to C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models
+Predict:         yolo predict task=detect model=C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo12m_openvino_model imgsz=640
+Validate:        yolo val task=detect model=C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo12m_openvino_model imgsz=640 data=None
+Visualize:       https://netron.app
+WARNING Unable to automatically guess model task, assuming 'task=detect'. Explicitly define task for your model, i.e. 'task=detect', 'segment', 'classify','pose' or 'obb'.
+WARNING 'source' is missing. Using 'source=C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets'.
+Loading C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo12m_openvino_model for OpenVINO inference...
+Using OpenVINO LATENCY mode for batch=1 inference on GPU.0...
+
+image 1/2 C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets\bus.jpg: 640x480 4 persons, 1 bus, 11912.3ms
+image 2/2 C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets\zidane.jpg: 384x640 2 persons, 1 tie, 1012.9ms
+Speed: 4.3ms preprocess, 6462.6ms inference, 17.1ms postprocess per image at shape (1, 3, 384, 640)
+
+--- yolo12m-320 Results over 100 iterations  ---
+Average Detection Time: 108.5513 ms (Max: 820.2531 ms)
+Average Preprocess Time: 2.4317 ms (Max: 3.2363 ms)
+Average Inference Time: 104.3744 ms (Max: 810.0041 ms)
+Average Postprocess Time: 1.3789 ms (Max: 2.2380 ms)
+
+--- yolo12m-480 Results over 100 iterations  ---
+Average Detection Time: 209.8138 ms (Max: 1006.2048 ms)
+Average Preprocess Time: 5.9031 ms (Max: 9.4858 ms)
+Average Inference Time: 201.5447 ms (Max: 998.3018 ms)
+Average Postprocess Time: 1.9633 ms (Max: 2.4633 ms)
+
+--- yolo12m-640 Results over 100 iterations  ---
+Average Detection Time: 310.7580 ms (Max: 1083.6992 ms)
+Average Preprocess Time: 11.3193 ms (Max: 39.8205 ms)
+Average Inference Time: 295.3604 ms (Max: 1068.1906 ms)
+Average Postprocess Time: 2.2010 ms (Max: 3.7701 ms)
+
+--- yolo12m-960 Results over 100 iterations  ---
+Average Detection Time: 767.9221 ms (Max: 1610.3566 ms)
+Average Preprocess Time: 21.2444 ms (Max: 51.3740 ms)
+Average Inference Time: 742.1534 ms (Max: 1582.0568 ms)
+Average Postprocess Time: 2.6920 ms (Max: 5.1633 ms)
+
+--- yolo12m-1280 Results over 100 iterations  ---
+Average Detection Time: 1740.5071 ms (Max: 2618.0487 ms)
+Average Preprocess Time: 32.9506 ms (Max: 62.1802 ms)
+Average Inference Time: 1700.8084 ms (Max: 2575.6287 ms)
+Average Postprocess Time: 2.8123 ms (Max: 4.8010 ms)
+Loading model yolo12l
+Ultralytics 8.3.186  Python-3.13.4 torch-2.7.1+cpu CPU (Intel Core(TM) i5-1035G1 1.00GHz)
+YOLOv12l summary (fused): 283 layers, 26,400,752 parameters, 0 gradients, 88.9 GFLOPs
+
+PyTorch: starting from 'C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo12l.pt' with input shape (1, 3, 640, 640) BCHW and output shape(s) (1, 84, 8400) (51.2 MB)
+
+OpenVINO: starting export with openvino 2025.1.0-18503-6fec06580ab-releases/2025/1...
+OpenVINO: export success  14.2s, saved as 'C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo12l_openvino_model\' (101.7 MB)
+
+Export complete (17.2s)
+Results saved to C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models
+Predict:         yolo predict task=detect model=C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo12l_openvino_model imgsz=640
+Validate:        yolo val task=detect model=C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo12l_openvino_model imgsz=640 data=None
+Visualize:       https://netron.app
+WARNING Unable to automatically guess model task, assuming 'task=detect'. Explicitly define task for your model, i.e. 'task=detect', 'segment', 'classify','pose' or 'obb'.
+WARNING 'source' is missing. Using 'source=C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets'.
+Loading C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo12l_openvino_model for OpenVINO inference...
+Using OpenVINO LATENCY mode for batch=1 inference on GPU.0...
+
+image 1/2 C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets\bus.jpg: 640x480 4 persons, 1 bus, 1 tie, 12848.9ms
+image 2/2 C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets\zidane.jpg: 384x640 2 persons, 2 ties, 994.6ms
+Speed: 4.2ms preprocess, 6921.8ms inference, 13.9ms postprocess per image at shape (1, 3, 384, 640)
+
+--- yolo12l-320 Results over 100 iterations  ---
+Average Detection Time: 159.0429 ms (Max: 852.8817 ms)
+Average Preprocess Time: 2.3500 ms (Max: 3.3672 ms)
+Average Inference Time: 154.8212 ms (Max: 843.6586 ms)
+Average Postprocess Time: 1.4921 ms (Max: 2.0699 ms)
+
+--- yolo12l-480 Results over 100 iterations  ---
+Average Detection Time: 286.3712 ms (Max: 1024.4532 ms)
+Average Preprocess Time: 5.1425 ms (Max: 7.1493 ms)
+Average Inference Time: 278.9484 ms (Max: 1015.1160 ms)
+Average Postprocess Time: 1.8865 ms (Max: 2.3704 ms)
+
+--- yolo12l-640 Results over 100 iterations  ---
+Average Detection Time: 474.1021 ms (Max: 1377.9039 ms)
+Average Preprocess Time: 10.5326 ms (Max: 35.5759 ms)
+Average Inference Time: 460.0072 ms (Max: 1364.1677 ms)
+Average Postprocess Time: 2.0449 ms (Max: 3.3430 ms)
+
+--- yolo12l-960 Results over 100 iterations  ---
+Average Detection Time: 1227.8616 ms (Max: 2108.1023 ms)
+Average Preprocess Time: 21.1285 ms (Max: 42.2947 ms)
+Average Inference Time: 1201.4735 ms (Max: 2078.1392 ms)
+Average Postprocess Time: 2.5698 ms (Max: 3.1588 ms)
+
+--- yolo12l-1280 Results over 100 iterations  ---
+Average Detection Time: 2793.1919 ms (Max: 3867.5277 ms)
+Average Preprocess Time: 30.1844 ms (Max: 63.6596 ms)
+Average Inference Time: 2757.2497 ms (Max: 3824.6142 ms)
+Average Postprocess Time: 2.5170 ms (Max: 7.7597 ms)
+Loading model yolo12x
+Ultralytics 8.3.186  Python-3.13.4 torch-2.7.1+cpu CPU (Intel Core(TM) i5-1035G1 1.00GHz)
+YOLOv12x summary (fused): 283 layers, 59,135,744 parameters, 0 gradients, 199.0 GFLOPs
+
+PyTorch: starting from 'C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo12x.pt' with input shape (1, 3, 640, 640) BCHW and output shape(s) (1, 84, 8400) (113.8 MB)
+
+OpenVINO: starting export with openvino 2025.1.0-18503-6fec06580ab-releases/2025/1...
+OpenVINO: export success  17.4s, saved as 'C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo12x_openvino_model\' (226.6 MB)
+
+Export complete (24.3s)
+Results saved to C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models
+Predict:         yolo predict task=detect model=C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo12x_openvino_model imgsz=640
+Validate:        yolo val task=detect model=C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo12x_openvino_model imgsz=640 data=None
+Visualize:       https://netron.app
+WARNING Unable to automatically guess model task, assuming 'task=detect'. Explicitly define task for your model, i.e. 'task=detect', 'segment', 'classify','pose' or 'obb'.
+WARNING 'source' is missing. Using 'source=C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets'.
+Loading C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yolo12x_openvino_model for OpenVINO inference...
+Using OpenVINO LATENCY mode for batch=1 inference on GPU.0...
+
+image 1/2 C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets\bus.jpg: 640x480 4 persons, 1 bus, 13312.2ms
+image 2/2 C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets\zidane.jpg: 384x640 1 person, 1 tie, 1256.3ms
+Speed: 4.0ms preprocess, 7284.3ms inference, 26.4ms postprocess per image at shape (1, 3, 384, 640)
+
+--- yolo12x-320 Results over 100 iterations  ---
+Average Detection Time: 235.5043 ms (Max: 1174.2446 ms)
+Average Preprocess Time: 3.5236 ms (Max: 10.3358 ms)
+Average Inference Time: 229.9165 ms (Max: 1155.4222 ms)
+Average Postprocess Time: 1.6257 ms (Max: 2.3246 ms)
+
+--- yolo12x-480 Results over 100 iterations  ---
+Average Detection Time: 445.0128 ms (Max: 1245.2078 ms)
+Average Preprocess Time: 5.9517 ms (Max: 7.1610 ms)
+Average Inference Time: 436.8107 ms (Max: 1236.3354 ms)
+Average Postprocess Time: 1.8637 ms (Max: 2.9837 ms)
+
+--- yolo12x-640 Results over 100 iterations  ---
+Average Detection Time: 758.7372 ms (Max: 1617.2855 ms)
+Average Preprocess Time: 10.4163 ms (Max: 19.9297 ms)
+Average Inference Time: 744.9748 ms (Max: 1603.2924 ms)
+Average Postprocess Time: 2.0908 ms (Max: 2.8190 ms)
+
+--- yolo12x-960 Results over 100 iterations  ---
+Average Detection Time: 1986.2836 ms (Max: 2840.1153 ms)
+Average Preprocess Time: 19.5183 ms (Max: 29.4692 ms)
+Average Inference Time: 1962.2895 ms (Max: 2811.3256 ms)
+Average Postprocess Time: 2.6439 ms (Max: 7.7877 ms)
+
+--- yolo12x-1280 Results over 100 iterations  ---
+Average Detection Time: 4729.7609 ms (Max: 6086.7844 ms)
+Average Preprocess Time: 38.0637 ms (Max: 124.9313 ms)
+Average Inference Time: 4664.3062 ms (Max: 5330.9009 ms)
+Average Postprocess Time: 8.2907 ms (Max: 499.4436 ms)
+Loading model yoloe-11s-seg
+Ultralytics 8.3.186  Python-3.13.4 torch-2.7.1+cpu CPU (Intel Core(TM) i5-1035G1 1.00GHz)
+YOLOe-11s-seg summary (fused): 137 layers, 13,693,398 parameters, 0 gradients, 36.4 GFLOPs
+
+PyTorch: starting from 'C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yoloe-11s-seg.pt' with input shape (1, 3, 640, 640) BCHW and output shape(s) ((1, 116, 8400), (1, 32, 160, 160)) (26.5 MB)
+
+OpenVINO: starting export with openvino 2025.1.0-18503-6fec06580ab-releases/2025/1...
+OpenVINO: export success  6.1s, saved as 'C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yoloe-11s-seg_openvino_model\' (39.7 MB)
+
+Export complete (7.6s)
+Results saved to C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models
+Predict:         yolo predict task=segment model=C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yoloe-11s-seg_openvino_model imgsz=640
+Validate:        yolo val task=segment model=C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yoloe-11s-seg_openvino_model imgsz=640 data={'train': {'yolo_data': ['Objects365v1.yaml'], 'grounding_data': [{'img_path': '../datasets/flickr/full_images/', 'json_file': '../datasets/flickr/annotations/final_flickr_separateGT_train_segm.json'}, {'img_path': '../datasets/mixed_grounding/gqa/images', 'json_file': '../datasets/mixed_grounding/annotations/final_mixed_train_no_coco_segm.json'}]}, 'val': {'yolo_data': ['lvis.yaml']}}
+Visualize:       https://netron.app
+WARNING 'source' is missing. Using 'source=C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets'.
+Loading C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yoloe-11s-seg_openvino_model for OpenVINO inference...
+Using OpenVINO LATENCY mode for batch=1 inference on GPU.0...
+
+image 1/2 C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets\bus.jpg: 640x480 (no detections), 17102.1ms
+image 2/2 C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets\zidane.jpg: 384x640 (no detections), 2649.4ms
+Speed: 3.2ms preprocess, 9875.8ms inference, 7.3ms postprocess per image at shape (1, 3, 384, 640)
+
+--- yoloe-11s-seg-320 Results over 100 iterations  ---
+Average Detection Time: 92.0683 ms (Max: 2782.5291 ms)
+Average Preprocess Time: 2.0777 ms (Max: 3.4989 ms)
+Average Inference Time: 89.0082 ms (Max: 2774.9595 ms)
+Average Postprocess Time: 0.6392 ms (Max: 0.9561 ms)
+
+--- yoloe-11s-seg-480 Results over 100 iterations  ---
+Average Detection Time: 132.2571 ms (Max: 2668.0765 ms)
+Average Preprocess Time: 4.6499 ms (Max: 6.3403 ms)
+Average Inference Time: 126.0898 ms (Max: 2660.8226 ms)
+Average Postprocess Time: 0.8853 ms (Max: 1.2335 ms)
+
+--- yoloe-11s-seg-640 Results over 100 iterations  ---
+Average Detection Time: 803.9921 ms (Max: 3157.6276 ms)
+Average Preprocess Time: 10.4190 ms (Max: 52.4801 ms)
+Average Inference Time: 189.8234 ms (Max: 3143.9051 ms)
+Average Postprocess Time: 603.3547 ms (Max: 1093.8879 ms)
+
+--- yoloe-11s-seg-960 Results over 100 iterations  ---
+Average Detection Time: 345.8029 ms (Max: 3079.1914 ms)
+Average Preprocess Time: 20.7451 ms (Max: 24.1894 ms)
+Average Inference Time: 321.4529 ms (Max: 3010.9662 ms)
+Average Postprocess Time: 1.7450 ms (Max: 12.1078 ms)
+
+--- yoloe-11s-seg-1280 Results over 100 iterations  ---
+Average Detection Time: 570.4496 ms (Max: 3120.0757 ms)
+Average Preprocess Time: 35.8290 ms (Max: 50.7142 ms)
+Average Inference Time: 529.5452 ms (Max: 3079.1806 ms)
+Average Postprocess Time: 1.9450 ms (Max: 3.4007 ms)
+Loading model yoloe-11m-seg
+Ultralytics 8.3.186  Python-3.13.4 torch-2.7.1+cpu CPU (Intel Core(TM) i5-1035G1 1.00GHz)
+YOLOe-11m-seg summary (fused): 162 layers, 29,868,582 parameters, 0 gradients, 125.2 GFLOPs
+
+PyTorch: starting from 'C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yoloe-11m-seg.pt' with input shape (1, 3, 640, 640) BCHW and output shape(s) ((1, 116, 8400), (1, 32, 160, 160)) (57.5 MB)
+
+OpenVINO: starting export with openvino 2025.1.0-18503-6fec06580ab-releases/2025/1...
+OpenVINO: export success  9.9s, saved as 'C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yoloe-11m-seg_openvino_model\' (87.3 MB)
+
+Export complete (12.6s)
+Results saved to C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models
+Predict:         yolo predict task=segment model=C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yoloe-11m-seg_openvino_model imgsz=640
+Validate:        yolo val task=segment model=C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yoloe-11m-seg_openvino_model imgsz=640 data={'train': {'yolo_data': ['Objects365v1.yaml'], 'grounding_data': [{'img_path': '../datasets/flickr/full_images/', 'json_file': '../datasets/flickr/annotations/final_flickr_separateGT_train_segm.json'}, {'img_path': '../datasets/mixed_grounding/gqa/images', 'json_file': '../datasets/mixed_grounding/annotations/final_mixed_train_no_coco_segm.json'}]}, 'val': {'yolo_data': ['lvis.yaml']}}
+Visualize:       https://netron.app
+WARNING 'source' is missing. Using 'source=C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets'.
+Loading C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yoloe-11m-seg_openvino_model for OpenVINO inference...
+Using OpenVINO LATENCY mode for batch=1 inference on GPU.0...
+
+image 1/2 C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets\bus.jpg: 640x480 (no detections), 18883.6ms
+image 2/2 C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets\zidane.jpg: 384x640 (no detections), 3920.2ms
+Speed: 2.9ms preprocess, 11401.9ms inference, 0.8ms postprocess per image at shape (1, 3, 384, 640)
+
+--- yoloe-11m-seg-320 Results over 100 iterations  ---
+Average Detection Time: 152.9302 ms (Max: 3906.2681 ms)
+Average Preprocess Time: 2.2914 ms (Max: 3.1097 ms)
+Average Inference Time: 149.4802 ms (Max: 3897.6343 ms)
+Average Postprocess Time: 0.7481 ms (Max: 1.1049 ms)
+
+--- yoloe-11m-seg-480 Results over 100 iterations  ---
+Average Detection Time: 255.4376 ms (Max: 4094.6665 ms)
+Average Preprocess Time: 5.9081 ms (Max: 12.4951 ms)
+Average Inference Time: 247.4919 ms (Max: 4086.9042 ms)
+Average Postprocess Time: 1.0646 ms (Max: 2.2484 ms)
+
+--- yoloe-11m-seg-640 Results over 100 iterations  ---
+Average Detection Time: 1020.2435 ms (Max: 4364.0447 ms)
+Average Preprocess Time: 9.9696 ms (Max: 35.7333 ms)
+Average Inference Time: 381.6912 ms (Max: 4347.9868 ms)
+Average Postprocess Time: 627.6560 ms (Max: 876.1822 ms)
+
+--- yoloe-11m-seg-960 Results over 100 iterations  ---
+Average Detection Time: 720.8590 ms (Max: 3334.4858 ms)
+Average Preprocess Time: 21.4882 ms (Max: 50.5400 ms)
+Average Inference Time: 695.8592 ms (Max: 3267.0902 ms)
+Average Postprocess Time: 1.6161 ms (Max: 2.0343 ms)
+
+--- yoloe-11m-seg-1280 Results over 100 iterations  ---
+Average Detection Time: 1236.4170 ms (Max: 3843.7912 ms)
+Average Preprocess Time: 34.9053 ms (Max: 60.4201 ms)
+Average Inference Time: 1197.1429 ms (Max: 3799.6089 ms)
+Average Postprocess Time: 1.9971 ms (Max: 5.1460 ms)
+Loading model yoloe-11l-seg
+Ultralytics 8.3.186  Python-3.13.4 torch-2.7.1+cpu CPU (Intel Core(TM) i5-1035G1 1.00GHz)
+YOLOe-11l-seg summary (fused): 227 layers, 35,117,862 parameters, 0 gradients, 144.1 GFLOPs
+
+PyTorch: starting from 'C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yoloe-11l-seg.pt' with input shape (1, 3, 640, 640) BCHW and output shape(s) ((1, 116, 8400), (1, 32, 160, 160)) (67.7 MB)
+
+OpenVINO: starting export with openvino 2025.1.0-18503-6fec06580ab-releases/2025/1...
+OpenVINO: export success  12.4s, saved as 'C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yoloe-11l-seg_openvino_model\' (107.6 MB)
+
+Export complete (15.9s)
+Results saved to C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models
+Predict:         yolo predict task=segment model=C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yoloe-11l-seg_openvino_model imgsz=640
+Validate:        yolo val task=segment model=C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yoloe-11l-seg_openvino_model imgsz=640 data={'train': {'yolo_data': ['Objects365v1.yaml'], 'grounding_data': [{'img_path': '../datasets/flickr/full_images/', 'json_file': '../datasets/flickr/annotations/final_flickr_separateGT_train_segm.json'}, {'img_path': '../datasets/mixed_grounding/gqa/images', 'json_file': '../datasets/mixed_grounding/annotations/final_mixed_train_no_coco_segm.json'}]}, 'val': {'yolo_data': ['lvis.yaml']}}
+Visualize:       https://netron.app
+WARNING 'source' is missing. Using 'source=C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets'.
+Loading C:\Users\tempo\AppData\Local\Panopticon\Panopticon\panopticon_models\yoloe-11l-seg_openvino_model for OpenVINO inference...
+Using OpenVINO LATENCY mode for batch=1 inference on GPU.0...
+
+image 1/2 C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets\bus.jpg: 640x480 (no detections), 12638.2ms
+image 2/2 C:\Users\tempo\Desktop\Python\Lib\site-packages\ultralytics\assets\zidane.jpg: 384x640 (no detections), 3206.1ms
+Speed: 5.2ms preprocess, 7922.2ms inference, 26.0ms postprocess per image at shape (1, 3, 384, 640)
+
+--- yoloe-11l-seg-320 Results over 100 iterations  ---
+Average Detection Time: 177.0568 ms (Max: 3210.7515 ms)
+Average Preprocess Time: 2.9935 ms (Max: 5.2868 ms)
+Average Inference Time: 172.9142 ms (Max: 3200.7820 ms)
+Average Postprocess Time: 0.7351 ms (Max: 1.4400 ms)
+
+--- yoloe-11l-seg-480 Results over 100 iterations  ---
+Average Detection Time: 283.3779 ms (Max: 3249.7036 ms)
+Average Preprocess Time: 6.2668 ms (Max: 8.2835 ms)
+Average Inference Time: 275.2042 ms (Max: 3240.2237 ms)
+Average Postprocess Time: 0.9788 ms (Max: 1.3926 ms)
+
+--- yoloe-11l-seg-640 Results over 100 iterations  ---
+Average Detection Time: 1208.2504 ms (Max: 3604.6579 ms)
+Average Preprocess Time: 10.0111 ms (Max: 26.6239 ms)
+Average Inference Time: 406.5922 ms (Max: 3591.4358 ms)
+Average Postprocess Time: 791.2119 ms (Max: 934.0963 ms)
+
+--- yoloe-11l-seg-960 Results over 100 iterations  ---
+Average Detection Time: 1139.3135 ms (Max: 4179.8995 ms)
+Average Preprocess Time: 19.0334 ms (Max: 36.5433 ms)
+Average Inference Time: 819.4847 ms (Max: 4000.7197 ms)
+Average Postprocess Time: 298.8293 ms (Max: 344.4754 ms)
+
+--- yoloe-11l-seg-1280 Results over 100 iterations  ---
+Average Detection Time: 1358.9009 ms (Max: 4536.1700 ms)
+Average Preprocess Time: 31.1787 ms (Max: 49.6472 ms)
+Average Inference Time: 1322.8277 ms (Max: 4455.6557 ms)
+Average Postprocess Time: 1.8485 ms (Max: 3.9104 ms)

@@ -1,0 +1,150 @@
+{
+    "licenses": [
+        {
+            "id": 0,
+            "name": "",
+            "url": ""
+        }
+    ],
+    "info": {
+        "contributor": "",
+        "date_created": "2026/02/25",
+        "version": "1",
+        "year": 2026,
+        "description": ""
+    },
+    "categories": [],
+    "images": [
+        {
+            "id": 1,
+            "width": 256,
+            "height": 246,
+            "file_name": "LOGO_TEXT_FREE_256w.jpeg",
+            "license": 0,
+            "flickr_url": "",
+            "coco_url": "",
+            "date_captured": 0
+        },
+        {
+            "id": 1,
+            "width": 256,
+            "height": 246,
+            "file_name": "LOGO_TEXT_FREE_256w.png",
+            "license": 0,
+            "flickr_url": "",
+            "coco_url": "",
+            "date_captured": 0
+        },
+        {
+            "id": 2,
+            "width": 256,
+            "height": 270,
+            "file_name": "LOGO_AGR_256w.png",
+            "license": 0,
+            "flickr_url": "",
+            "coco_url": "",
+            "date_captured": 0
+        },
+        {
+            "id": 3,
+            "width": 210,
+            "height": 245,
+            "file_name": "HellenicArmySeal.svg.png",
+            "license": 0,
+            "flickr_url": "",
+            "coco_url": "",
+            "date_captured": 0
+        },
+        {
+            "id": 4,
+            "width": 330,
+            "height": 324,
+            "file_name": "Coat_of_arms_of_Greece_(military).svg.png",
+            "license": 0,
+            "flickr_url": "",
+            "coco_url": "",
+            "date_captured": 0
+        },
+        {
+            "id": 5,
+            "width": 307,
+            "height": 352,
+            "file_name": "473TEPP.jpg",
+            "license": 0,
+            "flickr_url": "",
+            "coco_url": "",
+            "date_captured": 0
+        },
+        {
+            "id": 6,
+            "width": 1024,
+            "height": 1024,
+            "file_name": "LOGO_PAN_ANNOTATOR.png",
+            "license": 0,
+            "flickr_url": "",
+            "coco_url": "",
+            "date_captured": 0
+        },
+        {
+            "id": 7,
+            "width": 1266,
+            "height": 1218,
+            "file_name": "LOGO_TEXT_FREE.jpeg",
+            "license": 0,
+            "flickr_url": "",
+            "coco_url": "",
+            "date_captured": 0
+        },
+        {
+            "id": 8,
+            "width": 1266,
+            "height": 1333,
+            "file_name": "LOGO_AGR.png",
+            "license": 0,
+            "flickr_url": "",
+            "coco_url": "",
+            "date_captured": 0
+        },
+        {
+            "id": 9,
+            "width": 1266,
+            "height": 1386,
+            "file_name": "LOGO_GR.jpeg",
+            "license": 0,
+            "flickr_url": "",
+            "coco_url": "",
+            "date_captured": 0
+        },
+        {
+            "id": 10,
+            "width": 366,
+            "height": 272,
+            "file_name": "IV_Army_Corps_Greece.jpg",
+            "license": 0,
+            "flickr_url": "",
+            "coco_url": "",
+            "date_captured": 0
+        },
+        {
+            "id": 11,
+            "width": 256,
+            "height": 246,
+            "file_name": "LOGO_TEXT_FREE_256w_transparent.png",
+            "license": 0,
+            "flickr_url": "",
+            "coco_url": "",
+            "date_captured": 0
+        },
+        {
+            "id": 12,
+            "width": 2048,
+            "height": 2048,
+            "file_name": "LOGO_OG.jpeg",
+            "license": 0,
+            "flickr_url": "",
+            "coco_url": "",
+            "date_captured": 0
+        }
+    ],
+    "annotations": []
+}

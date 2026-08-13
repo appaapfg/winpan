@@ -1,0 +1,85 @@
+# Model Configurations
+# This file contains a mapping of model short names to their Hugging Face model IDs or local file paths.
+# Commented-out entries are models that are currently not actively used or supported.
+
+# Open-vocabulary object detectors (Hugging Face Transformers)
+# owlv2-base: google/owlv2-base-patch16-ensemble
+# owlv2-large: google/owlv2-large-patch14-ensemble
+
+# Supervised object detectors (Hugging Face Transformers)
+# detr: facebook/detr-resnet-50
+# deformable_detr: SenseTime/deformable-detr
+# rt_detr_50: PekingU/rtdetr_r50vd
+rt_detr_18_o365: PekingU/rtdetr_r18vd_coco_o365
+rt_detr_50_o365: PekingU/rtdetr_r50vd_coco_o365
+rt_detr_101_o365: PekingU/rtdetr_r101vd_coco_o365
+# rt_detr_v2_18: PekingU/rtdetr_v2_r18vd
+# rt_detr_v2_34: PekingU/rtdetr_v2_r34vd
+# rt_detr_v2_50: PekingU/rtdetr_v2_r50vd
+# rt_detr_v2_101: PekingU/rtdetr_v2_r101vd
+
+# YOLO models (Ultralytics)
+yolo_8n: yolov8n.pt
+yolo_8s: yolov8s.pt
+yolo_8m: yolov8m.pt
+yolo_8l: yolov8l.pt
+yolo_8x: yolov8x.pt
+yolo_9t: yolov9t.pt
+yolo_9s: yolov9s.pt
+yolo_9m: yolov9m.pt
+yolo_9c: yolov9c.pt
+yolo_9e: yolov9e.pt
+yolo_10n: yolov10n.pt
+yolo_10s: yolov10s.pt
+yolo_10m: yolov10m.pt
+yolo_10b: yolov10b.pt
+yolo_10l: yolov10l.pt
+yolo_10x: yolov10x.pt
+yolo_11n: yolo11n.pt
+yolo_11s: yolo11s.pt
+yolo_11m: yolo11m.pt
+yolo_11l: Yolo11l.pt
+yolo_11x: yolo11x.pt
+yolo_12n: yolo12n.pt
+yolo_12s: yolo12s.pt
+yolo_12m: yolo12m.pt
+yolo_12l: yolo12l.pt
+yolo_12x: yolo12x.pt
+yolo_26l: yolo26l.pt
+# yolow_v2_s: yolov8s-worldv2.pt
+# yolow_v2_m: yolov8m-worldv2.pt
+# yolow_v2_l: yolov8l-worldv2.pt
+# yolow_v2_x: yolov8x-worldv2.pt
+
+# YOLOE models (Ultralytics)
+yoloe_11s: yoloe-11s-seg.pt
+yoloe_11m: yoloe-11m-seg.pt
+yoloe_11l: yoloe-11l-seg.pt
+yoloe_11s-od: yoloe-11s-seg.pt
+yoloe_11m-od: yoloe-11m-seg.pt
+yoloe_11l-od: yoloe-11l-seg.pt
+# yoloe_v8s: yoloe-v8s-seg.pt
+# yoloe_v8m: yoloe-v8m-seg.pt
+# yoloe_v8l: yoloe-v8l-seg.pt
+
+# DAB-DETR models (Hugging Face Transformers)
+dab_detr: IDEA-Research/dab-detr-resnet-50
+dab_detr_dc5: IDEA-Research/dab-detr-resnet-50-dc5
+
+# Grounding DINO models (Hugging Face Transformers)
+grounding_dino_tiny: IDEA-Research/grounding-dino-tiny
+grounding_dino_base: IDEA-Research/grounding-dino-base
+
+# Dfine models (Hugging Face Transformers)
+dfine_nano: ustc-community/dfine-nano-coco
+dfine_small: ustc-community/dfine-small-obj365
+dfine_medium: ustc-community/dfine-medium-obj365
+dfine_large: ustc-community/dfine-large-obj365
+dfine_xlarge: ustc-community/dfine-xlarge-obj365
+
+# RF-DETR models (Local files)
+# rf_detr_nano: rf-detr-nano.pth
+# rf_detr_small: rf-detr-small.pth
+# rf_detr_medium: rf-detr-medium.pth
+# rf_detr_base: rf-detr-base.pth
+# rf_detr_large: rf-detr-large.pth
