@@ -20,7 +20,6 @@ temp
 *.pth
 run*
 *.pt
-.github
 *.onnx
 *.engine
 *.odt

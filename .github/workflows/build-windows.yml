@@ -1,0 +1,96 @@
+name: Build Windows Applications
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      # --------------------------------------------------
+      # Checkout
+      # --------------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # --------------------------------------------------
+      # Python
+      # --------------------------------------------------
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13.7"
+          cache: "pip"
+
+      # --------------------------------------------------
+      # Dependencies
+      # --------------------------------------------------
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pyinstaller
+
+      # --------------------------------------------------
+      # Build App 1
+      # --------------------------------------------------
+      - name: Build App 1
+        run: |
+          pyinstaller `
+            --noconfirm `
+            --clean `
+            --windowed `
+            --onedir `
+            --name "panop" `
+            pan_opticon.py
+
+      # --------------------------------------------------
+      # Build App 2
+      # --------------------------------------------------
+      - name: Build App 2
+        run: |
+          pyinstaller `
+            --noconfirm `
+            --clean `
+            --windowed `
+            --onedir `
+            --name "pananno" `
+            pan_annotator.py
+
+      # --------------------------------------------------
+      # Build App 3
+      # --------------------------------------------------
+      - name: Build App 3
+        run: |
+          pyinstaller `
+            --noconfirm `
+            --clean `
+            --windowed `
+            --onedir `
+            --name "pantrain" `
+            pan_trainer.py
+
+      # --------------------------------------------------
+      # Put everything into one release directory
+      # --------------------------------------------------
+      - name: Prepare release
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path release
+
+          Copy-Item -Recurse dist/panop release/panop
+          Copy-Item -Recurse dist/pananno release/pananno
+          Copy-Item -Recurse dist/pantrain release/pantrain
+
+      # --------------------------------------------------
+      # Upload all three
+      # --------------------------------------------------
+      - name: Upload Windows builds
+        uses: actions/upload-artifact@v4
+        with:
+          name: MyApps-Windows
+          path: release/
