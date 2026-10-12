@@ -172,7 +172,7 @@ def convert_coco(
     save_dir: str = "coco_converted/",
     use_segments: bool = False,
     use_keypoints: bool = False,
-    cls91to80: bool = True,
+    cls91to80: bool = False,
     lvis: bool = False,
 ):
     """

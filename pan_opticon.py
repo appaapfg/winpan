@@ -766,10 +766,10 @@ class PanopticonMainWindow(QMainWindow):
         self._update_fps_indicator()
 
     def _on_fast_backward(self):
-        self.video_stream_handler.seek_by_frames(-30)  # Backward 30 frames
+        self.video_stream_handler.seek_by_frames(-240)  # Backward 240 frames
 
     def _on_fast_forward(self):
-        self.video_stream_handler.seek_by_frames(30)  # Forward 30 frames
+        self.video_stream_handler.seek_by_frames(240)  # Forward 240 frames
 
     def _open_favorites_dialog(self):
         dialog = FavoritesDialog(self, self.tr)

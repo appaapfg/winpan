@@ -48,11 +48,11 @@ def split_and_save_coco(image_dir, annotations_path, output_dir, train_split, va
     os.makedirs(valid_dir, exist_ok=True)
     os.makedirs(test_dir, exist_ok=True)
 
-    train_dataset.as_coco(annotations_path=os.path.join(train_dir, "annotations.coco.json"), images_directory_path=train_dir)
+    train_dataset.as_coco(annotations_path=os.path.join(train_dir, "_annotations.coco.json"), images_directory_path=train_dir)
 
-    valid_dataset.as_coco(annotations_path=os.path.join(valid_dir, "annotations.coco.json"), images_directory_path=valid_dir)
+    valid_dataset.as_coco(annotations_path=os.path.join(valid_dir, "_annotations.coco.json"), images_directory_path=valid_dir)
 
-    test_dataset.as_coco(annotations_path=os.path.join(test_dir, "annotations.coco.json"), images_directory_path=test_dir)
+    test_dataset.as_coco(annotations_path=os.path.join(test_dir, "_annotations.coco.json"), images_directory_path=test_dir)
 
     return len(dataset), len(train_dataset), len(valid_dataset), len(test_dataset)
 
