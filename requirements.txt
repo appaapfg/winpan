@@ -155,8 +155,8 @@ threadpoolctl==3.6.0
 tifffile==2025.10.4
 timm @ git+https://github.com/huggingface/pytorch-image-models@625386b96151ec49dede06190b0deaa3909cd4de
 tokenizers==0.22.1
-torch==2.10.0+cu129
-torchvision==0.25.0+cu129
+torch==2.10.0+cu129; platform_system == "Linux"
+torchvision==0.25.0+cu129; platform_system == "Linux"
 tqdm==4.67.1
 transformers @ git+https://github.com/huggingface/transformers@bdee0889714e9cb3e53d3b1b2a626919479d356c
 triton==3.6.0; platform_system == "Linux"
