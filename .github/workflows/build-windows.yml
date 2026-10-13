@@ -34,8 +34,35 @@ jobs:
           python -m pip install --upgrade pip
           pip install torch==2.10.0 torchvision==0.25.0 --index-url https://download.pytorch.org/whl/cu128
           pip install -r requirements.txt
+
+      # --------------------------------------------------
+      # Confirm correct torch and torchvision versions
+      # --------------------------------------------------
+      - name: Confirm correct torch and torchvision versions
+        run: |
           pip install torch==2.10.0 torchvision==0.25.0 --index-url https://download.pytorch.org/whl/cu128
+
+      # --------------------------------------------------
+      # Install pyinstaller
+      # --------------------------------------------------
+      - name: Install pyinstaller
+        run: |
           pip install pyinstaller
+
+      # --------------------------------------------------
+      # Install local package
+      # --------------------------------------------------
+      - name: Install local package
+        run: |
+          pip install .
+
+      # --------------------------------------------------
+      # Confirm local package installation
+      # --------------------------------------------------
+      - name: Confirm local package installation
+        run: |
+          python -c "import panopticon; print(panopticon.__file__)"
+          python -c "from panopticon.my_inference.detect import Detector; print('!!!!!!DETECTOR IMPORTED SUCCESSFULLY!!!!!!')"
 
       # --------------------------------------------------
       # Build App 1
@@ -48,6 +75,7 @@ jobs:
             --windowed `
             --onedir `
             --name "panop" `
+            --collect-submodules panopticon `
             pan_opticon.py
 
       # --------------------------------------------------
@@ -61,6 +89,7 @@ jobs:
             --windowed `
             --onedir `
             --name "pananno" `
+            --collect-submodules panopticon `
             pan_annotator.py
 
       # --------------------------------------------------
@@ -74,6 +103,7 @@ jobs:
             --windowed `
             --onedir `
             --name "pantrain" `
+            --collect-submodules panopticon `
             pan_trainer.py
 
       # --------------------------------------------------
