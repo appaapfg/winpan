@@ -62,8 +62,9 @@ jobs:
       - name: Confirm local package installation
         run: |
           pip list
+          python -c "import sys; print('Python:', sys.executable)"
           pip show -f panopticon
-          pip show -f panopticon-0.1
+          python -c "import importlib.metadata as m; d=m.distribution('panopticon'); print('TOP_LEVEL.TXT:', repr(d.read_text('top_level.txt'))); print('INSTALLED FILES:'); print('\n'.join(str(f) for f in d.files or []))"
           python -c "import panopticon; print(panopticon.__file__)"
           python -c "from panopticon.my_inference.detect import Detector; print('!!!!!!DETECTOR IMPORTED SUCCESSFULLY!!!!!!')"
 
