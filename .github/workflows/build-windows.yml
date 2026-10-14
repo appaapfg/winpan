@@ -9,11 +9,6 @@ on:
 jobs:
   build-windows:
     runs-on: windows-latest
-    timeout-minutes: 180
-
-    env:
-      YOLO_AUTOINSTALL: "false"
-      PYTHONFAULTHANDLER: "1"
 
     steps:
       # --------------------------------------------------
@@ -23,7 +18,7 @@ jobs:
         uses: actions/checkout@v4
 
       # --------------------------------------------------
-      # Set up Python
+      # Python
       # --------------------------------------------------
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -32,160 +27,98 @@ jobs:
           cache: "pip"
 
       # --------------------------------------------------
-      # Install PyTorch
-      # --------------------------------------------------
-      - name: Install PyTorch
-        shell: pwsh
-        run: |
-          python -m pip install --upgrade pip
-
-          if ($LASTEXITCODE -ne 0) {
-            throw "Failed to upgrade pip."
-          }
-
-          python -m pip install `
-            torch==2.10.0 `
-            torchvision==0.25.0 `
-            --index-url https://download.pytorch.org/whl/cu128
-
-          if ($LASTEXITCODE -ne 0) {
-            throw "PyTorch installation failed."
-          }
-
-      # --------------------------------------------------
-      # Install requirements
+      # Dependencies
       # --------------------------------------------------
       - name: Install dependencies
-        shell: pwsh
         run: |
-          python -m pip install -r requirements.txt
-
-          if ($LASTEXITCODE -ne 0) {
-            throw "Requirements installation failed."
-          }
+          python -m pip install --upgrade pip
+          pip install torch==2.10.0 torchvision==0.25.0 --index-url https://download.pytorch.org/whl/cu128
+          pip install -r requirements.txt
 
       # --------------------------------------------------
-      # Install Ultralytics optional dependency
+      # Confirm correct torch and torchvision versions
       # --------------------------------------------------
-      - name: Install lap
-        shell: pwsh
+      - name: Confirm correct torch and torchvision versions
         run: |
-          python -m pip install lap==0.5.13
-
-          if ($LASTEXITCODE -ne 0) {
-            throw "lap installation failed."
-          }
+          pip install torch==2.10.0 torchvision==0.25.0 --index-url https://download.pytorch.org/whl/cu128
 
       # --------------------------------------------------
-      # Verify the environment
+      # Install pyinstaller
       # --------------------------------------------------
-      - name: Verify dependencies
-        shell: pwsh
+      - name: Install pyinstaller
         run: |
-          python --version
-          python -m pip --version
-
-          python -m pip show torch
-          python -m pip show torchvision
-          python -m pip show ultralytics
-          python -m pip show PySide6
-          python -m pip show pyinstaller
-          python -m pip show lap
-
-          python -c "import PySide6; print('PySide6 import OK')"
-          python -c "import PyInstaller; print('PyInstaller:', PyInstaller.__version__)"
-
-          if ($LASTEXITCODE -ne 0) {
-            throw "Dependency verification failed."
-          }
+          pip install pyinstaller
 
       # --------------------------------------------------
-      # Install the local package
+      # Install local package
       # --------------------------------------------------
       - name: Install local package
-        shell: pwsh
         run: |
-          python -m pip install .
-
-          if ($LASTEXITCODE -ne 0) {
-            throw "Local package installation failed."
-          }
+          pip install .
 
       # --------------------------------------------------
-      # Build App 1: panop
+      # Test PyTorch and Ultralytics imports
       # --------------------------------------------------
-      - name: Build App 1 - panop
+      - name: Test PyTorch and Ultralytics imports
         shell: pwsh
-        timeout-minutes: 60
+        timeout-minutes: 15
         run: |
-          Write-Host "Starting panop build..."
+          Write-Host "Testing PyTorch..."
 
-          python -u -m PyInstaller `
+          python -c "import time; t=time.time(); import torch; print('PyTorch import completed in', round(time.time()-t, 2), 'seconds')"
+
+          if ($LASTEXITCODE -ne 0) {throw "PyTorch import failed"}
+
+          Write-Host "Testing Ultralytics..."
+
+          python -c "import time; t=time.time(); import ultralytics; print('Ultralytics import completed in', round(time.time()-t, 2), 'seconds')"
+
+          if ($LASTEXITCODE -ne 0) {throw "Ultralytics import failed"}
+
+      # --------------------------------------------------
+      # Build App 1
+      # --------------------------------------------------
+      - name: Build App 1
+        run: |
+          pyinstaller `
             --noconfirm `
             --clean `
             --windowed `
             --onedir `
             --name "panop" `
             --log-level DEBUG `
-            pan_opticon.py 2>&1 |
-            Tee-Object -FilePath panop-build.log
-
-          if ($LASTEXITCODE -ne 0) {
-            throw "PyInstaller failed to build panop. Check panop-build.log."
-          }
-
-          Write-Host "panop build completed successfully."
+            pan_opticon.py
 
       # --------------------------------------------------
-      # Build App 2: pananno
+      # Build App 2
       # --------------------------------------------------
-      - name: Build App 2 - pananno
-        shell: pwsh
-        timeout-minutes: 60
+      - name: Build App 2
         run: |
-          Write-Host "Starting pananno build..."
-
-          python -u -m PyInstaller `
+          pyinstaller `
             --noconfirm `
             --clean `
             --windowed `
             --onedir `
             --name "pananno" `
-            --log-level INFO `
+            --log-level DEBUG `
             pan_annotator.py
 
-          if ($LASTEXITCODE -ne 0) {
-            throw "PyInstaller failed to build pananno."
-          }
-
-          Write-Host "pananno build completed successfully."
-
       # --------------------------------------------------
-      # Build App 3: pantrain
+      # Build App 3
       # --------------------------------------------------
-      - name: Build App 3 - pantrain
-        shell: pwsh
-        timeout-minutes: 60
+      - name: Build App 3
         run: |
-          Write-Host "Starting pantrain build..."
-
-          python -u -m PyInstaller `
+          pyinstaller `
             --noconfirm `
             --clean `
             --windowed `
             --onedir `
             --name "pantrain" `
-            --log-level INFO `
+            --log-level DEBUG `
             pan_trainer.py
 
-          if ($LASTEXITCODE -ne 0) {
-            throw "PyInstaller failed to build pantrain."
-          }
-
-          Write-Host "pantrain build completed successfully."
-
       # --------------------------------------------------
-      # Prepare release
+      # Put everything into one release directory
       # --------------------------------------------------
       - name: Prepare release
         shell: pwsh
@@ -197,24 +130,10 @@ jobs:
           Copy-Item -Recurse dist/pantrain release/pantrain
 
       # --------------------------------------------------
-      # Upload Windows builds
+      # Upload all three
       # --------------------------------------------------
       - name: Upload Windows builds
         uses: actions/upload-artifact@v4
         with:
           name: MyApps-Windows
           path: release/
-
-      # --------------------------------------------------
-      # Preserve diagnostic output even if the build fails
-      # --------------------------------------------------
-      - name: Upload panop diagnostic log
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: panop-build-diagnostics
-          path: |
-            panop-build.log
-            build/panop/warn-panop.txt
-            build/panop/xref-panop.html
-          if-no-files-found: ignore
