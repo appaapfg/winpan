@@ -67,7 +67,7 @@ jobs:
             --windowed `
             --onedir `
             --name "panop" `
-            --collect-submodules panopticon `
+            --log-level DEBUG `
             pan_opticon.py
 
       # --------------------------------------------------
@@ -81,7 +81,7 @@ jobs:
             --windowed `
             --onedir `
             --name "pananno" `
-            --collect-submodules panopticon `
+            --log-level DEBUG `
             pan_annotator.py
 
       # --------------------------------------------------
@@ -95,7 +95,7 @@ jobs:
             --windowed `
             --onedir `
             --name "pantrain" `
-            --collect-submodules panopticon `
+            --log-level DEBUG `
             pan_trainer.py
 
       # --------------------------------------------------
