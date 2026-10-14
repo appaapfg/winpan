@@ -9,6 +9,11 @@ on:
 jobs:
   build-windows:
     runs-on: windows-latest
+    timeout-minutes: 180
+
+    env:
+      YOLO_AUTOINSTALL: "false"
+      PYTHONFAULTHANDLER: "1"
 
     steps:
       # --------------------------------------------------
@@ -18,7 +23,7 @@ jobs:
         uses: actions/checkout@v4
 
       # --------------------------------------------------
-      # Python
+      # Set up Python
       # --------------------------------------------------
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -27,79 +32,160 @@ jobs:
           cache: "pip"
 
       # --------------------------------------------------
-      # Dependencies
+      # Install PyTorch
       # --------------------------------------------------
-      - name: Install dependencies
+      - name: Install PyTorch
+        shell: pwsh
         run: |
           python -m pip install --upgrade pip
-          pip install torch==2.10.0 torchvision==0.25.0 --index-url https://download.pytorch.org/whl/cu128
-          pip install -r requirements.txt
+
+          if ($LASTEXITCODE -ne 0) {
+            throw "Failed to upgrade pip."
+          }
+
+          python -m pip install `
+            torch==2.10.0 `
+            torchvision==0.25.0 `
+            --index-url https://download.pytorch.org/whl/cu128
+
+          if ($LASTEXITCODE -ne 0) {
+            throw "PyTorch installation failed."
+          }
 
       # --------------------------------------------------
-      # Confirm correct torch and torchvision versions
+      # Install requirements
       # --------------------------------------------------
-      - name: Confirm correct torch and torchvision versions
+      - name: Install dependencies
+        shell: pwsh
         run: |
-          pip install torch==2.10.0 torchvision==0.25.0 --index-url https://download.pytorch.org/whl/cu128
+          python -m pip install -r requirements.txt
+
+          if ($LASTEXITCODE -ne 0) {
+            throw "Requirements installation failed."
+          }
 
       # --------------------------------------------------
-      # Install pyinstaller
+      # Install Ultralytics optional dependency
       # --------------------------------------------------
-      - name: Install pyinstaller
+      - name: Install lap
+        shell: pwsh
         run: |
-          pip install pyinstaller
+          python -m pip install lap==0.5.13
+
+          if ($LASTEXITCODE -ne 0) {
+            throw "lap installation failed."
+          }
 
       # --------------------------------------------------
-      # Install local package
+      # Verify the environment
+      # --------------------------------------------------
+      - name: Verify dependencies
+        shell: pwsh
+        run: |
+          python --version
+          python -m pip --version
+
+          python -m pip show torch
+          python -m pip show torchvision
+          python -m pip show ultralytics
+          python -m pip show PySide6
+          python -m pip show pyinstaller
+          python -m pip show lap
+
+          python -c "import PySide6; print('PySide6 import OK')"
+          python -c "import PyInstaller; print('PyInstaller:', PyInstaller.__version__)"
+
+          if ($LASTEXITCODE -ne 0) {
+            throw "Dependency verification failed."
+          }
+
+      # --------------------------------------------------
+      # Install the local package
       # --------------------------------------------------
       - name: Install local package
+        shell: pwsh
         run: |
-          pip install .
+          python -m pip install .
+
+          if ($LASTEXITCODE -ne 0) {
+            throw "Local package installation failed."
+          }
 
       # --------------------------------------------------
-      # Build App 1
+      # Build App 1: panop
       # --------------------------------------------------
-      - name: Build App 1
+      - name: Build App 1 - panop
+        shell: pwsh
+        timeout-minutes: 60
         run: |
-          pyinstaller `
+          Write-Host "Starting panop build..."
+
+          python -u -m PyInstaller `
             --noconfirm `
             --clean `
             --windowed `
             --onedir `
             --name "panop" `
             --log-level DEBUG `
-            pan_opticon.py
+            pan_opticon.py 2>&1 |
+            Tee-Object -FilePath panop-build.log
+
+          if ($LASTEXITCODE -ne 0) {
+            throw "PyInstaller failed to build panop. Check panop-build.log."
+          }
+
+          Write-Host "panop build completed successfully."
 
       # --------------------------------------------------
-      # Build App 2
+      # Build App 2: pananno
       # --------------------------------------------------
-      - name: Build App 2
+      - name: Build App 2 - pananno
+        shell: pwsh
+        timeout-minutes: 60
         run: |
-          pyinstaller `
+          Write-Host "Starting pananno build..."
+
+          python -u -m PyInstaller `
             --noconfirm `
             --clean `
             --windowed `
             --onedir `
             --name "pananno" `
-            --log-level DEBUG `
+            --log-level INFO `
             pan_annotator.py
 
+          if ($LASTEXITCODE -ne 0) {
+            throw "PyInstaller failed to build pananno."
+          }
+
+          Write-Host "pananno build completed successfully."
+
       # --------------------------------------------------
-      # Build App 3
+      # Build App 3: pantrain
       # --------------------------------------------------
-      - name: Build App 3
+      - name: Build App 3 - pantrain
+        shell: pwsh
+        timeout-minutes: 60
         run: |
-          pyinstaller `
+          Write-Host "Starting pantrain build..."
+
+          python -u -m PyInstaller `
             --noconfirm `
             --clean `
             --windowed `
             --onedir `
             --name "pantrain" `
-            --log-level DEBUG `
+            --log-level INFO `
             pan_trainer.py
 
+          if ($LASTEXITCODE -ne 0) {
+            throw "PyInstaller failed to build pantrain."
+          }
+
+          Write-Host "pantrain build completed successfully."
+
       # --------------------------------------------------
-      # Put everything into one release directory
+      # Prepare release
       # --------------------------------------------------
       - name: Prepare release
         shell: pwsh
@@ -111,10 +197,24 @@ jobs:
           Copy-Item -Recurse dist/pantrain release/pantrain
 
       # --------------------------------------------------
-      # Upload all three
+      # Upload Windows builds
       # --------------------------------------------------
       - name: Upload Windows builds
         uses: actions/upload-artifact@v4
         with:
           name: MyApps-Windows
           path: release/
+
+      # --------------------------------------------------
+      # Preserve diagnostic output even if the build fails
+      # --------------------------------------------------
+      - name: Upload panop diagnostic log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: panop-build-diagnostics
+          path: |
+            panop-build.log
+            build/panop/warn-panop.txt
+            build/panop/xref-panop.html
+          if-no-files-found: ignore
