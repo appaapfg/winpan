@@ -57,28 +57,40 @@ jobs:
           pip install .
 
       # --------------------------------------------------
-      # Test PyTorch and Ultralytics imports
+      # Instrument PyInstaller DLL analysis
       # --------------------------------------------------
-      - name: Test PyTorch and Ultralytics imports
+      - name: Instrument PyInstaller DLL analysis
         shell: pwsh
-        timeout-minutes: 15
         run: |
-          Write-Host "Testing PyTorch..."
+          @'
+          from pathlib import Path
+          import PyInstaller.building.build_main as bm
 
-          python -c "import time; t=time.time(); import torch; print('PyTorch import completed in', round(time.time()-t, 2), 'seconds')"
+          path = Path(bm.__file__)
+          source = path.read_text(encoding="utf-8")
+          old = "                __import__(package)"
+          new = (
+              '                print('
+              'f"PYI_DLL_IMPORT_START {package}", '
+              'file=__import__("sys").stderr, flush=True)\n'
+              + old
+          )
 
-          if ($LASTEXITCODE -ne 0) {throw "PyTorch import failed"}
+          if source.count(old) != 1:
+              raise SystemExit(
+                  f"Expected one target in {path}; refusing to modify it."
+              )
 
-          Write-Host "Testing Ultralytics..."
-
-          python -c "import time; t=time.time(); import ultralytics; print('Ultralytics import completed in', round(time.time()-t, 2), 'seconds')"
-
-          if ($LASTEXITCODE -ne 0) {throw "Ultralytics import failed"}
+          path.write_text(source.replace(old, new, 1), encoding="utf-8")
+          print(f"Instrumented {path}")
+          '@ | python -
 
       # --------------------------------------------------
       # Build App 1
       # --------------------------------------------------
       - name: Build App 1
+        shell: pwsh
+        timeout-minutes: 25
         run: |
           pyinstaller `
             --noconfirm `
@@ -87,7 +99,11 @@ jobs:
             --onedir `
             --name "panop" `
             --log-level DEBUG `
-            pan_opticon.py
+            pan_opticon.py 2>&1 |
+            Tee-Object -FilePath pyinstaller-debug.log
+
+          if ($LASTEXITCODE -ne 0) {exit $LASTEXITCODE}
+          Write-Host "panop build completed successfully."
 
       # --------------------------------------------------
       # Build App 2
