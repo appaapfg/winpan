@@ -57,6 +57,14 @@ jobs:
           pip install .
 
       # --------------------------------------------------
+      # Test my_inference import
+      # --------------------------------------------------
+      - name: Test my_inference import
+        timeout-minutes: 15
+        run: |
+          python -u -c "print('IMPORT START', flush=True); import panopticon.my_inference; print('IMPORT COMPLETE', flush=True)"
+
+      # --------------------------------------------------
       # Instrument PyInstaller DLL analysis
       # --------------------------------------------------
       - name: Instrument PyInstaller DLL analysis
