@@ -78,6 +78,7 @@ def _show_missing_config_error(missing_files):
 
     try:
         from PySide6.QtWidgets import QApplication, QMessageBox
+        from PySide6.QtCore import QTimer
         print('==============22==============', flush=True)
 
         app = QApplication.instance()
@@ -89,7 +90,10 @@ def _show_missing_config_error(missing_files):
             owns_app = True
 
         print('==============22.3==============', flush=True)
-        QMessageBox.critical(None, "Panopticon Configuration Missing", message)
+        #QMessageBox.critical(None, "Panopticon Configuration Missing", message)
+        msg_to_display = QMessageBox(QMessageBox.Critical, "Panopticon Configuration Missing", message)
+        QTimer.singleShot(3000, msg_to_display.accept)
+        msg_to_display.exec()
         print('==============23==============', flush=True)
 
         if owns_app:
