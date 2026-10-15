@@ -81,11 +81,14 @@ def _show_missing_config_error(missing_files):
         print('==============22==============', flush=True)
 
         app = QApplication.instance()
+        print('==============22.1==============', flush=True)
         owns_app = False
         if app is None:
             app = QApplication([])
+            print('==============22.2==============', flush=True)
             owns_app = True
 
+        print('==============22.3==============', flush=True)
         QMessageBox.critical(None, "Panopticon Configuration Missing", message)
         print('==============23==============', flush=True)
 
