@@ -1,11 +1,11 @@
 import os
 from typing import Any
-
+print('==============4==============', flush=True)
 import numpy as np
 import torch
 import yaml
 from PIL import Image
-
+print('==============5==============', flush=True)
 # from rfdetr import RFDETRBase, RFDETRLarge, RFDETRMedium, RFDETRNano, RFDETRSmall
 # from rfdetr.detr import RFDETR
 RFDETRBase, RFDETRLarge, RFDETRMedium, RFDETRNano, RFDETRSmall, RFDETR = (None, None, None, None, None, None)
@@ -29,18 +29,19 @@ from transformers import (
 from transformers.models.sam3 import Sam3Config, Sam3Model, Sam3Processor
 from ultralytics import YOLO, YOLOE, YOLOWorld
 from ultralytics.models.yolo.yoloe import YOLOEVPSegPredictor
-
+print('==============6==============', flush=True)
 from panopticon.config import DETECTION_MODELS_FILE, MODEL_DIRECTORY
-
+print('==============7==============', flush=True)
 with open(DETECTION_MODELS_FILE) as f:
     MODEL_CONFIGS = yaml.safe_load(f)
-
+print('==============8==============', flush=True)
 
 LOCAL_FILES_ONLY = False
 
 
 class Detector:
     SUPPORTED_MODELS = list(MODEL_CONFIGS.keys())
+    print('==============9==============', flush=True)
 
     def __init__(self, model_type: str, device: str | None = None, all_class_names: list[str] | None = None, batch_size: int = 1, resolution: tuple[int, int] | None = None):
         self.model_type = model_type
